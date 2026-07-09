@@ -11,9 +11,9 @@ Design (per the claude-api reference):
   * Structured outputs (output_config.format json_schema) force valid labels — no
     parsing/repair needed.
   * The guideline block sits in the system prompt with cache_control set. NOTE: at
-    ~600 tokens it's below Opus 4.8's 4096-token cache minimum, so caching is a no-op
-    today (harmless) — it only engages if the guidelines grow (few-shot examples, etc.)
-    past the model's minimum. For the cheapest run, use Sonnet 5 or the Batch API below.
+    ~600 tokens it's below the model's cache minimum, so caching is a no-op today
+    (harmless) — it engages only if the guidelines grow (few-shot examples, etc.)
+    past that minimum. For the cheapest bulk run, use the Batch API below.
   * Resumable: each result is appended to pre_labels.jsonl; re-running skips done ids.
   * Blind-IAA aware: pass --skip-ids <file> to leave the 100 IAA overlap items/lang
     unlabeled so human agreement isn't anchored on the LLM (doc §5).
