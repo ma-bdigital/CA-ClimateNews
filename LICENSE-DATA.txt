@@ -1,0 +1,22 @@
+CA-ClimateNews annotations/labels — Creative Commons Attribution 4.0 International
+(CC BY 4.0)
+
+Copyright (c) 2026 Anonymous (paper under double-blind review)
+
+The CA-ClimateNews annotations and labels — Level-1 relevance labels, Level-2 topic
+labels, adjudicated gold labels, inter-annotator-agreement labels, the annotation
+guidelines, and derived metadata — are licensed under the Creative Commons
+Attribution 4.0 International License (CC BY 4.0).
+
+You are free to share and adapt this material for any purpose, including
+commercially, provided you give appropriate credit (cite the CA-ClimateNews paper),
+provide a link to the license, and indicate if changes were made.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+Human-readable summary: https://creativecommons.org/licenses/by/4.0/
+
+SCOPE: This license covers only the annotations/labels/guidelines. It does NOT cover:
+  - the headline and lead text excerpts, which remain under their originating
+    outlets' copyright and are redistributed as short fair-use excerpts with source
+    URLs and access dates (takedown available on request — see README); and
+  - the code, which is licensed separately under the MIT License (LICENSE-CODE.txt).
