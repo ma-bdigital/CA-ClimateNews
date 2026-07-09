@@ -1,10 +1,8 @@
 # CA-ClimateNews — Annotation Sheet Reference
 
-Derived verbatim from `climatenlp2026_project_doc.md.pdf` §3 (task), §4 (collection),
-§5 (protocol/storage). This is the controlled vocabulary + per-column spec the
-annotation sheet (`annotation_sheet.csv`) must obey. Import the CSV into the shared
-Google Sheet (or Label Studio) and apply the validation rules below as column
-constraints before annotation starts.
+The controlled vocabulary + per-column specification the annotation sheet must obey.
+Import the CSV into a spreadsheet (or Label Studio) and apply the validation rules
+below as column constraints before annotation starts.
 
 ## Columns (16)
 
@@ -55,11 +53,8 @@ Hard-case rules (apply verbatim):
 Tie-break: label by the article's main frame (what headline+lead foreground).
 If truly 50/50, prefer the more specific category over `SCIENCE_GEN`.
 
-## Blind-IAA rule (§5)
+## Blind-IAA rule
 For the 100 IAA overlap items/language, the data manager hides `llm_label_l1` and
 `llm_label_l2` so agreement measures humans, not shared anchoring on the LLM.
-
-## Notes on deviations from the doc
-- The §5 storage column list omits `parallel_group`, but §4 (dedup) and Splits both
-  require it ("mark them with a parallel_group id … kept in the same split"). Added
-  here as a required-when-applicable column so the requirement is not lost.
+`parallel_group` groups cross-language versions of the same story so they stay in
+the same split.

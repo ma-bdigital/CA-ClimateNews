@@ -6,8 +6,8 @@ Fills llm_label_l1 / llm_label_l2 in candidates_raw.csv so human annotators
 gets a human decision downstream; nothing ships on an LLM label alone.
 
 Design (per the claude-api reference):
-  * Model: claude-opus-4-8 (override with MODEL env var; Sonnet 5 or the Batch API
-    would cut cost on the full ~6000-item run — see note at bottom).
+  * Model: claude-sonnet-5 (override with MODEL env var; the Batch API would cut
+    cost further on the full ~6000-item run — see note at bottom).
   * Structured outputs (output_config.format json_schema) force valid labels — no
     parsing/repair needed.
   * The guideline block sits in the system prompt with cache_control set. NOTE: at
@@ -32,7 +32,7 @@ import anthropic
 HERE = Path(__file__).parent
 CANDIDATES = HERE / "candidates_raw.csv"
 PRELABELS = HERE / "pre_labels.jsonl"
-MODEL = os.environ.get("MODEL", "claude-opus-4-8")
+MODEL = os.environ.get("MODEL", "claude-sonnet-5")
 WORKERS = int(os.environ.get("WORKERS", "6"))
 
 L2_CATS = ["WATER_CRYO", "DISASTER", "AGRI_LAND", "ENERGY", "POLICY",
@@ -172,8 +172,7 @@ def merge(rows, done):
 if __name__ == "__main__":
     main()
 
-# COST NOTE: ~6000 items x (short item + cached guidelines) is a few $ on Opus 4.8;
+# COST NOTE: ~6000 items x (short item + cached guidelines) is a few $ on Sonnet 5;
 # with prompt caching the guideline prefix bills at ~0.1x after the first call.
-# For the cheapest bulk run, MODEL=claude-sonnet-5 (~40% cheaper) or the Batch API
-# (client.messages.batches, another 50% off, results within ~1h) — the doc says API
-# spend here is "trivially cheap; still cap spend."
+# For the cheapest bulk run, use the Batch API (client.messages.batches, ~50% off,
+# results within ~1h).
